@@ -75,15 +75,17 @@ class IconSpinnerAdapter(
     val icon = item.iconRes?.let {
       ResourcesCompat.getDrawable(spinnerView.resources, it, null)
     } ?: item.icon
-    when (item.iconGravity) {
-      Gravity.START ->
-        spinnerView.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null)
-      Gravity.END ->
-        spinnerView.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null)
-      Gravity.TOP ->
-        spinnerView.setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null)
-      Gravity.BOTTOM ->
-        spinnerView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, icon)
+    icon?.let {
+      when (item.iconGravity) {
+        Gravity.START ->
+          spinnerView.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null)
+        Gravity.END ->
+          spinnerView.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null)
+        Gravity.TOP ->
+          spinnerView.setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null)
+        Gravity.BOTTOM ->
+          spinnerView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, icon)
+      }
     }
     val oldIndex = this.index
     this.index = index
@@ -112,15 +114,17 @@ class IconSpinnerAdapter(
         val icon = item.iconRes?.let {
           ResourcesCompat.getDrawable(spinnerView.resources, it, null)
         } ?: item.icon
-        when (item.iconGravity) {
-          Gravity.START ->
-            setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null)
-          Gravity.END ->
-            setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null)
-          Gravity.TOP ->
-            setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null)
-          Gravity.BOTTOM ->
-            setCompoundDrawablesWithIntrinsicBounds(null, null, null, icon)
+        icon?.let {
+          when (item.iconGravity) {
+            Gravity.START ->
+              setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null)
+            Gravity.END ->
+              setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null)
+            Gravity.TOP ->
+              setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null)
+            Gravity.BOTTOM ->
+              setCompoundDrawablesWithIntrinsicBounds(null, null, null, icon)
+          }
         }
       }
       binding.root.setPadding(
